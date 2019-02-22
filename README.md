@@ -21,4 +21,3 @@ The goal of this workshop is to equip educators with concrete information on con
 - Part 3 will focus on classroom management on GitHub (with ghclass) and automated feedback with continuous integration tools (e.g. Wercker). 
 
 Workshop attendees will work through several exercises from the course and get first-hand experience with using the tool-chains and techniques described above. All workshop content, including teacher facing documentation and student facing course materials, will also be available to participants via datasciencebox.org.
-
