@@ -14,6 +14,3 @@ Looking forward to meeting you all next week.
 
 Best,
 Mine
-
-
-
