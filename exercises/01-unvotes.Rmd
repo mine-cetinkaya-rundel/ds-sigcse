@@ -51,11 +51,11 @@ un_votes %>%
     )
 ```
 
-## Exercises
+## Tasks
 
-1. How has the voting record of United States and Turkey changed over the years?
-On which issues do these countries vote similarly, and on which issues do their 
-votes differ? Discuss with your neighbor.
+1. Discuss with your neighbor: How has the voting record of United States and 
+Turkey changed over the years? On which issues do these countries vote 
+similarly, and on which issues do their votes differ?
 2. Update the code above to change `Turkey` to a different country of your 
 choice. Knit this document to regenerate the plot, and discuss your new plot 
 with your neighbor.
