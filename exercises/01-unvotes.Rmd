@@ -1,0 +1,85 @@
+---
+title: "Ex 01 - UN Votes"
+author: "Mine Çetinkaya-Rundel"
+output: 
+  html_document: 
+    highlight: pygments
+---
+
+```{r load-packages, include=FALSE}
+library(unvotes)
+library(tidyverse)
+library(lubridate)
+library(DT)
+```
+
+## Voting patterns in the UN General Assembly
+
+The General Assembly is one of the six main organs of the United Nations, the only one in which all Member States have equal representation: one nation, one vote. At the General Assembly, Member States discuss, work together, and vote on a wide array of international issues covered by the UN Charter. These issues can be categorized into the following:
+
+- Palestinian conflict
+- Nuclear weapons and nuclear material
+- Arms control and disarmament
+- Human rights
+- Colonialism
+- Economic development
+
+Let's take a look at the historic voting record of United States and one other 
+country on these issues.
+
+```{r plot-yearly-yes-issue, fig.width=10, warning=FALSE}
+un_votes %>%
+  dplyr::filter(country %in% c("United States of America", "Turkey")) %>%
+  inner_join(un_roll_calls, by = "rcid") %>%
+  inner_join(un_roll_call_issues, by = "rcid") %>%
+  group_by(country, year = year(date), issue) %>%
+  summarize(
+    votes = n(),
+    percent_yes = mean(vote == "yes")
+    ) %>%
+  dplyr::filter(votes > 5) %>%  # only use records with > 5 votes
+  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
+    geom_point() +
+    geom_smooth(method = "loess", se = FALSE) +
+    facet_wrap(~ issue) +
+    labs(
+      title = "Percentage of 'Yes' votes in the UN General Assembly",
+      subtitle = "1946 to 2015",
+      y = "% Yes",
+      x = "Year",
+      color = "Country"
+    )
+```
+
+## Exercises
+
+1. How has the voting record of United States and Turkey changed over the years?
+On which issues do these countries vote similarly, and on which issues do their 
+votes differ? Discuss with your neighbor.
+2. Update the code above to change `Turkey` to a different country of your 
+choice. Knit this document to regenerate the plot, and discuss your new plot 
+with your neighbor.
+
+<br>
+
+**Note:** You need to make sure you spell the name of the country of your 
+choice the same way it's spelled in the dataset. You can use the table below 
+to confirm spelling and capitalization.
+
+```{r list-countries, echo = FALSE}
+un_votes %>% 
+  select(country) %>%
+  arrange(country) %>% 
+  distinct() %>%
+  datatable(rownames = FALSE, options = list(dom = "ftp"))
+```
+
+
+## References
+
+1. United Nations, Main Body, Main Organs, General Assembly. http://www.un.org/en/ga.
+1. David Robinson (2017). unvotes: United Nations General Assembly Voting Data. 
+R package version 0.2.0. https://CRAN.R-project.org/package=unvotes.
+1. Erik Voeten "Data and Analyses of Voting in the UN General Assembly" 
+Routledge Handbook of International Organization, edited by Bob Reinalda 
+(published May 27, 2013).
