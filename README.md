@@ -51,6 +51,11 @@ available to participants via datasciencebox.org.
 ## Slides
 
   - [Welcome](/slides/00-welcome/00-welcome.html)
+  - [Part 1 - Curriculum](/slides/01-curriculum/01-curriculum.html)
+  - [Part 2 -
+    Infrastructure](/slides/02-infrastructure/02-infrastructure.html)
+  - [Part 3 - Classroom
+    management](/slides/03-classroom/03-classroom.html)
 
 ## Pre-workshop instructions
 
