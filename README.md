@@ -48,6 +48,10 @@ described above. All workshop content, including teacher facing
 documentation and student facing course materials, will also be
 available to participants via datasciencebox.org.
 
+## Slides
+
+  - [Welcome](/slides/00-welcome/00-welcome.html)
+
 ## Pre-workshop instructions
 
 In this workshop we will be coding in R via the RStudio IDE. If the
