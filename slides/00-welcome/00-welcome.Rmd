@@ -40,7 +40,13 @@ knitr::include_graphics("images/nametag.png")
 
 ## Workshop materials
 
-[INSERT URL]
+<br><br><br><br><br><br>
+
+.center[
+.xlarge[
+[rstd.io/sigcse19-ds](https://rstd.io/sigcse19-ds)
+]
+]
 
 ---
 
