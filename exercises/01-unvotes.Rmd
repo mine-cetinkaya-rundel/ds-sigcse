@@ -11,6 +11,7 @@ library(unvotes)
 library(tidyverse)
 library(lubridate)
 library(DT)
+conflict_prefer("filter", "dplyr")
 ```
 
 ## Voting patterns in the UN General Assembly
@@ -29,7 +30,7 @@ country on these issues.
 
 ```{r plot-yearly-yes-issue, fig.width=10, warning=FALSE}
 un_votes %>%
-  dplyr::filter(country %in% c("United States of America", "Turkey")) %>%
+  filter(country %in% c("United States of America", "Turkey")) %>%
   inner_join(un_roll_calls, by = "rcid") %>%
   inner_join(un_roll_call_issues, by = "rcid") %>%
   group_by(country, year = year(date), issue) %>%
@@ -37,7 +38,7 @@ un_votes %>%
     votes = n(),
     percent_yes = mean(vote == "yes")
     ) %>%
-  dplyr::filter(votes > 5) %>%  # only use records with > 5 votes
+  filter(votes > 5) %>%  # only use records with > 5 votes
   ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
     geom_point() +
     geom_smooth(method = "loess", se = FALSE) +
