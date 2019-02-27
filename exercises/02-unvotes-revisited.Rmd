@@ -1,0 +1,85 @@
+---
+title: "Ex 02 - UN Votes Revisited"
+author: "Mine Çetinkaya-Rundel"
+output: 
+  html_document: 
+    highlight: pygments
+---
+
+```{r load-packages, include=FALSE}
+library(unvotes)
+library(tidyverse)
+library(lubridate)
+conflict_prefer("filter", "dplyr")
+```
+
+## Data prep for UN voting patterns plot
+
+Earlier you used a dataset called `un_votes_joined` to build the plot on voting 
+patterns on various issues in the UN General Assembly plot.
+
+```{r un_votes_joined, warning=FALSE}
+un_votes_joined <- un_votes %>%
+  filter(country %in% c("United States of America", "Turkey")) %>%
+  inner_join(un_roll_calls, by = "rcid") %>%
+  inner_join(un_roll_call_issues, by = "rcid") %>%
+  group_by(country, year = year(date), issue) %>%
+  summarize(
+    votes = n(),
+    percent_yes = mean(vote == "yes")
+    ) %>%
+  filter(votes > 5)
+```
+
+The three data frames involved in the construction are the following:
+
+- The `un_votes` dataset provides information on the voting history of the United Nations General Assembly. It contains one row for each country-vote pair.
+
+```{r view-un_votes}
+un_votes
+```
+
+- The `un_roll_calls` dataset contains information on each roll call vote of the United Nations General Assembly.
+
+```{r view-un_roll_calls}
+un_roll_calls
+```
+
+- The `un_roll_call_issues` dataset contains (topic) classifications of roll call votes of the United Nations General Assembly. Many votes had no topic, and some have more than one.
+
+```{r view-un_roll_call_issues}
+un_roll_call_issues
+```
+
+## Task
+
+Work with your neighbir to describe what each line of the code for constructing `un_votes_joined` does. 
+
+The following resources might be helpful for understanding the join functions:
+
+  - [Cheatsheet for dplyr join functions
+](https://stat545.com/bit001_dplyr-cheatsheet.html)
+  - [Reference for join functions](https://dplyr.tidyverse.org/reference/join.html)
+
+**Note:** LHS means left hand side, and RHS means right hand side.
+
+**Hint:** Run the code one by one to view interim results, e.g.
+
+```{r line1}
+un_votes %>%
+  filter(country %in% c("United States of America", "Turkey"))
+```
+
+```{r line2, warning=FALSE}
+un_votes %>%
+  filter(country %in% c("United States of America", "Turkey")) %>%
+  inner_join(un_roll_calls, by = "rcid")
+```
+
+## References
+
+1. David Robinson (2017). unvotes: United Nations General Assembly Voting Data. 
+R package version 0.2.0. https://CRAN.R-project.org/package=unvotes.
+1. Erik Voeten "Data and Analyses of Voting in the UN General Assembly" 
+Routledge Handbook of International Organization, edited by Bob Reinalda 
+(published May 27, 2013).
