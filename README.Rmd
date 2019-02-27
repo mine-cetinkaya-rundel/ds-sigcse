@@ -1,7 +1,8 @@
 ---
-title: "Computing Infrastructure and Curriculum Design for Introductory Data Science"
 output: github_document
 ---
+
+# Computing Infrastructure and Curriculum Design for Introductory Data Science
 
 This repo contains materials for the "Computing Infrastructure and Curriculum Design for Introductory Data Science" workshop at SIGCSE 2019 in Minneapolis, MN.
 

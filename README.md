@@ -1,6 +1,5 @@
-Computing Infrastructure and Curriculum Design for Introductory Data
-Science
-================
+
+# Computing Infrastructure and Curriculum Design for Introductory Data Science
 
 This repo contains materials for the “Computing Infrastructure and
 Curriculum Design for Introductory Data Science” workshop at SIGCSE 2019
