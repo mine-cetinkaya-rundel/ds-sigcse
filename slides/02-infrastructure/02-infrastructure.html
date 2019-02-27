@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computing Infrastructure and Curriculum Design for Introductory Data Science    Part 2 - Infrastructure</title>
+    <meta charset="utf-8">
+    <meta name="author" content="SIGCSE 2019" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Computing Infrastructure and Curriculum Design for Introductory Data Science <br><br> Part 2 - Infrastructure
+### SIGCSE 2019
+### <br><br> Feb 27, 2019 <br> Mine Cetinkaya-Rundel
+
+---
+
+
+
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+Dr. Mine Çetinkaya-Rundel -
+&lt;a href="https://github.com/mine-cetinkaya-rundel/ds-sigcse" target="_blank"&gt;github.com/mine-cetinkaya-rundel/ds-sigcse
+&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt; 
+
+---
+
+
+
+class: center, middle, inverse
+
+## Toolkit
+
+---
+
+## Toolkit
+
+&lt;img src="images/toolkit.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Why R?
+
+- **Goal:** Teach data science, and motivate a foray into programming
+- Not just R, but a very opiniated (but widely used) subset of R
+  
+  
+---
+
+## Why RStudio Cloud?
+
+- **Goals:**
+  - Reduce friction at first exposure to R
+  - Avoid local installation
+- **Approach:** Install R and RStudio on a server and provide access to students
+- **Solutions:**
+  - Centralized RStudio server&lt;sup&gt;*&lt;/sup&gt;
+  - Dockerized RStudio server&lt;sup&gt;*&lt;/sup&gt;
+  - RStudio Cloud: Doesn't require IT support + Features designed for instructors
+    
+.footnote[
+[*] Çetinkaya-Rundel, Mine, and Rundel, Colin. "Infrastructure and tools for teaching computing throughout the statistical curriculum." The American Statistician (2018). Part of the Practical Data Science for Stats collection.
+]
+  
+---
+
+## Exercise: `03 - Your own course on Cloud!`
+
+.midi[
+- Go to [rstudio.cloud](https://rstudio.cloud/)
+- Create a new workspace, call it `SIGCSE 19`
+- Create a new project in this workspace, call it `HW 01`, make it visible to others in the workspace as an assignment: 
+  - ⚙️  `\(\rightarrow\)` *Access* `\(\rightarrow\)` Who can view this project: *Everyone in the workspace* 
+  - *Make this project and assignment*
+- Add a template R Markdown document:
+  - *File* `\(\rightarrow\)` *New File* `\(\rightarrow\)` *R Markdown* `\(\rightarrow\)` It will ask you to install required packages, say *Yes*
+  - In the New R Markdown pop-up window: Give your document a *Title* and add your name as *Author*, leave output format as *HTML*
+  - Knit to view the output, which will prompt you to name your document
+- Go back to your workspace by clicking on the workspace name on the top left
+- Click on *Members*, and under Options choose *Shared*, and *Copy Sharing Link*
+- Email the sharing link for your workspace to your neighbor
+- **Students:** Start assignment, make some change to the R Markdown document and knit it, then close the project
+- **Instructors:** Peek into your student’s project
+]
+
+---
+
+## RStudio Cloud: Instruction features
+
+- **Workspaces:**
+  - When you create an account on RStudio Cloud you get a workspace of your own - projects you create here are public
+  - You can add a new workspace and control its permissions - projects you create here can be public or private
+
+--
+- **User roles:**
+  - Admin: manage users, view, edit and manage all projects `\(\rightarrow\)` instructor
+  - Moderator: view, edit and manage all projects	`\(\rightarrow\)` TA
+  - Contributor: create, edit and manage their own projects	`\(\rightarrow\)` student
+  - Viewer: view projects shared with everyone `\(\rightarrow\)` auditor
+
+--
+- **Versatility:** 
+  - Can run Python code in R Markdown (via reticulate)
+  - RStudio (Cloud) will soon support Jupyter notebooks as well
+
+---
+
+## Why R Markdown?
+
+- Reproducibility is built in
+- Code and output are inseparable
+- Prose can inserted easily throughout the analysis
+
+---
+
+## Why Git &amp; GitHub?
+
+- Teach students tools that will grow with them, and tools for better science
+- Lots of mistakes along the way, need ability keep track of history (and revert)
+- Platform and interface designed to enable collaboration
+- Transparent commit history
+- Mastery takes time, starting early helps
+- Good for marketability + discoverability of students
+
+---
+
+## How Git &amp; GitHub GitHub?
+
+
+
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "solarized-dark",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
