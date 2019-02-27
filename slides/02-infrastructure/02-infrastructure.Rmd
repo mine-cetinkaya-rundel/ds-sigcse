@@ -60,7 +60,7 @@ knitr::include_graphics("images/toolkit.png")
   
 ---
 
-## Exercise: `03 - Your own course on Cloud!`
+## Exercise: `03 - Your own course on Cloud`
 
 .midi[
 - Go to [rstudio.cloud](https://rstudio.cloud/)
@@ -121,6 +121,8 @@ knitr::include_graphics("images/toolkit.png")
 ---
 
 ## How Git & GitHub GitHub?
+
+<br>
 
 .xlarge[
 more on this in Part 3...
