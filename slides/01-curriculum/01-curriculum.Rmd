@@ -18,7 +18,7 @@ output:
 
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
-conflict_prefer("filter", "dplyr")
+conflicted::conflict_prefer("filter", "dplyr")
 library(unvotes)
 library(lubridate)
 library(openintro)
@@ -235,7 +235,7 @@ background-size: cover
 class: center, middle
 
 .cutout[
-Pinapple and coconut sandwich
+Pinapple and coconut sandwich cake
 ]
 
 ---
@@ -245,7 +245,7 @@ background-size: cover
 class: center, middle
 
 .cutout[
-Pinapple and coconut sandwich
+Pinapple and coconut sandwich cake
 ```{r echo=FALSE}
 knitr::include_graphics("images/cake-ingredients.png")
 ```
@@ -258,7 +258,7 @@ background-size: cover
 class: center, middle
 
 .cutout[
-Pinapple and coconut sandwich `r emo::ji("arrow_forward")`
+Pinapple and coconut sandwich cake `r emo::ji("arrow_forward")`
 ```{r echo=FALSE}
 knitr::include_graphics("images/cake-ingredients.png")
 ```
@@ -270,13 +270,7 @@ knitr::include_graphics("images/cake-ingredients.png")
 
 class: center, middle
 
-<!--
-<video width="800" height="600">
-<source src="images/cake-video.mov" type="video/mp4">
-</video>
-
-<embed src="images/cake-video.mov" width="800" height="600"></embed>
--->
+<iframe width="853" height="480" src="https://www.youtube.com/embed/1ynPv3GMLP4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
