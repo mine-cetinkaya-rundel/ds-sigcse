@@ -1,0 +1,55 @@
+---
+title: "Computing Infrastructure and Curriculum Design for Introductory Data Science <br><br> Welcome!"
+author: "SIGCSE 2019"
+date: "<br><br> Feb 27, 2019 <br> Mine Cetinkaya-Rundel"
+output: 
+  xaringan::moon_reader:
+    css: ["../slides.css"]
+    lib_dir: libs
+    nature:
+      highlightLines: true
+      highlightStyle: solarized-light
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r child = "../setup.Rmd"}
+```
+
+```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+conflict_prefer("filter", "dplyr")
+library(unvotes)
+library(lubridate)
+```
+
+## Warm up
+
+- Get into groups of three and get to know each other.
+- While you wait, share with your team: What is one thing you' learned yesterday that surprised you're hoping to get out of this workshop? What about of the conference overall?
+
+---
+
+class: middle, center
+
+```{r echo=FALSE}
+knitr::include_graphics("images/nametag.png")
+```
+
+---
+
+## Workshop materials
+
+[INSERT URL]
+
+---
+
+## Stickies
+
+<br><br>
+
+```{r echo=FALSE}
+knitr::include_graphics("images/stickies.png")
+```
+
+
