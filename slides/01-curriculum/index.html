@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computing Infrastructure and Curriculum Design for Introductory Data Science    Part 1 - Curriculum</title>
+    <meta charset="utf-8">
+    <meta name="author" content="SIGCSE 2019" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Computing Infrastructure and Curriculum Design for Introductory Data Science <br><br> Part 1 - Curriculum
+### SIGCSE 2019
+### <br><br> Feb 27, 2019 <br> Mine Cetinkaya-Rundel
+
+---
+
+
+
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+Dr. Mine Çetinkaya-Rundel -
+&lt;a href="https://github.com/mine-cetinkaya-rundel/ds-sigcse" target="_blank"&gt;github.com/mine-cetinkaya-rundel/ds-sigcse
+&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt; 
+
+---
+
+
+
+## Goals
+
+- Outline a curriculum for an introductory data science course 
+- Discuss pedagogical decisions that go into the choice of topics and concepts: 
+  - Programming language (R) and syntax (primarily tidyverse)
+  - Emphasis on literate programming for reproducibility (with R Markdown)
+
+---
+
+## Exercise: `01-unvotes`
+
+- Go to [rstd.io/sigcse19-cloud](https://rstd.io/sigcse19-cloud)
+- Start the assignment titled `01 - UN Votes` and open the document called `01-unvotes.Rmd`
+
+&lt;img src="images/cloud-assignment.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;br&gt;
+
+.pull-left[
+- Now you get to run your (possibly first) R code! Knit the document, view the
+plot you produced, and complete the two tasks
+]
+.pull-right[
+&lt;img src="images/cloud-knit.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: center, middle, inverse
+
+## Curriculum
+
+---
+
+## Context
+
+.large[
+An introductory data science course that
+
+&lt;br&gt;
+
+🐣 &amp;nbsp; assumes no background  
+🔍 &amp;nbsp; focuses on EDA + modeling &amp; inference + modern computing  
+👩‍💻 &amp;nbsp; uses R as the programming languag  
+👥 &amp;nbsp; requires reproducibility  
+👭 &amp;nbsp; emphasizes collaboration + effective communication  
+]
+
+---
+
+## GAISE College Report College Report 2016
+
+&lt;img src="images/gaise-0.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+[Guidelines for Assessment &amp; Instruction in Statistics Education College Report College Report 2016](https://www.amstat.org/asa/files/pdfs/GAISE/GaiseCollege_Full.pdf)
+]
+
+---
+
+## GAISE 2016
+
+.pull-left[
+### What they said
+&lt;img src="images/gaise-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+### What I read
+- **NOT** a commonly used subset of tests and intervals and produce them with hand calculations
+]
+
+---
+
+## GAISE 2016
+
+.pull-left[
+### What they said
+&lt;img src="images/gaise-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+### What I read
+- **NOT** a commonly used subset of tests and intervals and produce them with hand calculations
+- Multivariate analysis requires the use of computing
+]
+
+---
+
+## GAISE 2016
+
+.pull-left[
+### What they said
+&lt;img src="images/gaise-3.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+### What I read
+- **NOT** a commonly used subset of tests and intervals and produce them with hand calculations
+- Multivariate analysis requires the use of computing
+- **NOT** use technology that is only applicable in the intro course or that doesn’t follow good science principles
+]
+
+---
+
+## GAISE 2016
+
+.pull-left[
+### What they said
+&lt;img src="images/gaise-4.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+### What I read
+- **NOT** a commonly used subset of tests and intervals and produce them with hand calculations
+- Multivariate analysis requires the use of computing
+- **NOT** use technology that is only applicable in the intro course or that doesn’t follow good science principles
+- Data analysis isn’t just inference and modeling, it’s also data importing, cleaning, preparation, exploration, and visualization
+]
+
+---
+
+## Learning units
+
+&lt;img src="images/topic-flow-0.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Unit 1 - Exploring data
+
+&lt;img src="images/topic-flow-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+- Data visualization and data wranling
+- Confounding variables, and Simpson’s paradox 
+- Tidy data, data import, data cleaning, data collection (including web scraping to introduce the idea of iteration in preparation for the next unit) 
+- Introduction to the toolkit: R, RStudio, R Markdown, Git, GitHub, etc.
+
+---
+
+## Unit 2 - Making rigorous conclusions
+
+&lt;img src="images/topic-flow-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+- Modeling and statistical inference for making data based conclusions
+- Building, interpreting, and selecting models, visualizing interaction effects, and prediction and model validity. 
+- Statistical inference via simulation (randomization + bootstrapping)
+
+---
+
+## Unit 3 - Looking forward
+
+&lt;img src="images/topic-flow-3.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+- Whatever you like!
+- Independent modules that instructors can choose to include in their introductory data science curriculum depending on how much time they have left in the semester.
+- Interactive reporting and visualizaiton with Shiny, text analysis, Bayesian inference, etc.
+
+---
+
+class: center, middle, inverse
+
+## Pedagogy
+
+---
+
+class: middle
+
+## Five guiding principles
+
+.xlarge[
+🍰 &amp;nbsp; start with cake  
+🚼 &amp;nbsp; skip baby steps  
+🗓 &amp;nbsp; cherish day one  
+🥦 &amp;nbsp; hide the veggies  
+🌎 &amp;nbsp; leverage the ecosystem  
+]
+
+---
+
+class:middle
+
+.bigquestion[
+Which of the following gives you a **better** sense of the final product?
+]
+
+---
+
+background-image: url(https://www.psdgraphics.com/wp-content/uploads/2017/03/red-white-gingham.jpg)
+background-size: cover 
+class: center, middle
+
+.cutout[
+Pinapple and coconut sandwich cake
+]
+
+---
+
+background-image: url(https://www.psdgraphics.com/wp-content/uploads/2017/03/red-white-gingham.jpg)
+background-size: cover 
+class: center, middle
+
+.cutout[
+Pinapple and coconut sandwich cake
+&lt;img src="images/cake-ingredients.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+background-image: url(https://www.psdgraphics.com/wp-content/uploads/2017/03/red-white-gingham.jpg)
+background-size: cover 
+class: center, middle
+
+.cutout[
+Pinapple and coconut sandwich cake ▶️
+&lt;img src="images/cake-ingredients.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+&lt;embed src="images/gbbo-audio.m4a" width="32" height="32"&gt;&lt;/embed&gt;
+
+---
+
+class: center, middle
+
+&lt;iframe width="853" height="480" src="https://www.youtube.com/embed/1ynPv3GMLP4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+class: middle, center
+
+.huge[
+🍰 &amp;nbsp; start with cake 
+]
+
+---
+
+class: middle
+
+.bigquestion[
+Which of the following is more likely to be **motivating** for a wide range of students? 
+]
+
+---
+
+.pull-left[
+**Option 1:**
+- Declare the following variables
+- Then, determine the class of each variable
+
+
+```r
+# Declare variables
+x &lt;- 8
+y &lt;- "monkey"
+z &lt;- FALSE 
+
+# Check classes
+class(x)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+class(y)
+```
+
+```
+## [1] "character"
+```
+
+```r
+class(z)
+```
+
+```
+## [1] "logical"
+```
+]
+--
+
+.pull-right[
+**Option 2:**
+- Open today’s demo project
+- Knit the document and discuss the results with your neighbor
+
+&lt;br&gt;
+
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-16-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+- Then, change `Turkey` to a different country, and plot again
+]
+
+---
+
+## start with🍰 = start with 📊
+
+- **Familiarity:** Students have likely previously encountered data visualizations
+- **Intuition:** Interpretation of a data visualization, even a complex one on a dataset with a familiar context, requires little to no instruction
+- **Ease:** It's not necessarily easy to make visualizations, but it can be easier for students to catch their own mistakes than when doing data manipulation or building models
+- **Shift in flow:** Teach data science first, then programming, i.e. delay introducing important programming basics (e.g. variable types, data structures)
+
+---
+
+class: middle, center
+
+.huge[
+🚼 &amp;nbsp; skip baby steps  
+]
+
+---
+
+class: middle
+
+.bigquestion[
+Which of the following is more likely to **inspire** students to want to learn more?
+]
+
+---
+
+.pull-left[
+**Option 1:**
+Create a visualization displaying whether the vote was on an amendment.
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+--
+
+.pull-right[
+**Option 2:**
+Create a visualization displaying how US and Turkey voted over the years on issues of arms control and disarmament, colonialism, economic development, human rights, nuclear weapons, and Palestinian conflict.
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-18-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: middle, center
+
+.xlarge[
+but with great examples,
+
+comes a great amount of code...
+]
+
+---
+
+**Option 1:**
+Create a visualization displaying whether the vote was on an amendment.
+
+
+```r
+ggplot(data = un_roll_calls, mapping = aes(x = amend)) +
+  geom_bar()
+```
+
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+**Option 2:**
+Create a visualization displaying how US and Turkey voted over the years on issues of arms control and disarmament, colonialism, economic development, human rights, nuclear weapons, and Palestinian conflict.
+
+.pull-left[
+.small[
+
+```r
+un_votes %&gt;%
+  filter(country %in% c("United States of America", "Turkey")) %&gt;%
+  inner_join(un_roll_calls, by = "rcid") %&gt;%
+  inner_join(un_roll_call_issues, by = "rcid") %&gt;%
+  group_by(country, year = year(date), issue) %&gt;%
+  summarize(
+    votes = n(),
+    percent_yes = mean(vote == "yes")
+    ) %&gt;%
+  filter(votes &gt; 5) %&gt;%  # only use records with &gt; 5 votes
+  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
+    geom_point() +
+    geom_smooth(method = "loess", se = FALSE) +
+    facet_wrap(~ issue) +
+    labs(
+      title = "Percentage of 'Yes' votes\nin the UN General Assembly",
+      subtitle = "1946 to 2015",
+      y = "% Yes",
+      x = "Year",
+      color = "Country"
+    )
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: middle, center
+
+.xlarge[
+non-trivial examples can be motivating, 
+
+but need to avoid 👇!
+]
+
+&lt;br&gt;
+
+&lt;img src="images/draw-owl.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Take a look at the data
+
+
+
+
+```r
+un_votes_joined
+```
+
+```
+## # A tibble: 621 x 5
+##    country  year issue                                votes percent_yes
+##    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;                                &lt;int&gt;       &lt;dbl&gt;
+##  1 Turkey   1946 Colonialism                             15       0.8  
+##  2 Turkey   1946 Economic development                     7       0.571
+##  3 Turkey   1947 Colonialism                              9       0.222
+##  4 Turkey   1947 Palestinian conflict                     6       0    
+##  5 Turkey   1948 Arms control and disarmament             8       0    
+##  6 Turkey   1948 Colonialism                             13       0.462
+##  7 Turkey   1948 Human rights                            11       0.182
+##  8 Turkey   1948 Nuclear weapons and nuclear material     7       0    
+##  9 Turkey   1948 Palestinian conflict                    11       0.273
+## 10 Turkey   1949 Colonialism                             35       0.543
+## # … with 611 more rows
+```
+
+---
+
+### Start with a blank canvas
+
+.pull-left[
+.small[
+
+```r
+*ggplot(data = un_votes_joined)
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-24-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Map `year` to the x-axis
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+*      mapping = aes(x = year))
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-25-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Map `percent_yes` to the y-axis
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+*      mapping = aes(x = year, y = percent_yes))
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-26-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Represent each observation with a point
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes)) +
+* geom_point()
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-27-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Color the points by country
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+*                    color = country)) +
+  geom_point()
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-28-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Add a smooth line for each country
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+* geom_smooth(method = "loess", se = FALSE)
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-29-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Facet by `issue`
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) + 
+* facet_wrap(~ issue)
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-30-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Add title
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) + 
+  facet_wrap(~ issue) +
+  labs(
+*   title = "Percentage of 'Yes' votes in the UN GA"
+  )
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-31-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Add subtitle
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) + 
+  facet_wrap(~ issue) +
+  labs(
+    title = "Percentage of 'Yes' votes in the UN GA",
+*   subtitle = "1946 to 2015"
+  )
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-32-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Add axis labels
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) + 
+  facet_wrap(~ issue) +
+  labs(
+    title = "Percentage of 'Yes' votes in the UN GA",
+    subtitle = "1946 to 2015",
+*   x = "Year", y = "% Yes"
+  )
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-33-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+### Add legend title
+
+.pull-left[
+.small[
+
+```r
+ggplot(data = un_votes_joined,
+       mapping = aes(x = year, y = percent_yes,
+                     color = country)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) + 
+  facet_wrap(~ issue) +
+  labs(
+    title = "Percentage of 'Yes' votes in the UN GA",
+    subtitle = "1946 to 2015",
+    x = "Year", y = "% Yes",
+*   color = "Country"
+  )
+```
+]
+]
+.pull-right[
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-34-1.png" width="120%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Exercise: `02-unvotes-revisited`
+
+- Go to [rstd.io/sigcse19-cloud](https://rstd.io/sigcse19-cloud)
+- Start the assignment titled `02 - UN Votes Revisited` and open the R Markdown (`.Rmd`) document
+- Knit the document to reveal your task
+
+---
+
+class: middle, center
+
+.huge[
+🗓 &amp;nbsp; cherish day one  
+]
+
+---
+
+class:middle
+
+.bigquestion[
+Which of the following is more likely to be **welcoming** for a wide range of students? 
+]
+
+---
+
+.pull-left[
+**Option 1:**
+- Install R
+- Install RStudio
+- Install the following packages:
+  - tidyverse
+  - rmarkdown
+  - ...
+… Load these packages
+- Install git
+]
+--
+
+.pull-right[
+**Option 2:**
+- Go to rstudio.cloud (or some other server based solution)
+- Log in with your ID &amp; pass
+
+`&gt; hello R!`
+]
+
+--
+
+&lt;br&gt;&lt;br&gt;
+
+.large[
+more on this in Part 2...
+]
+
+---
+
+class: middle, center
+
+.huge[
+🥦 &amp;nbsp; hide the veggies  
+]
+
+---
+
+class:middle
+
+.bigquestion[
+Which of the following is more likely to be **interesting** for a wide range of students? 
+]
+
+---
+
+.left-column[
+**Option 1:**
+- Topic: Web scraping
+- Tools: 
+  - `rvest`
+  - regular expressions
+]
+--
+
+.right-column[
+**Option 2:**
+- Today we start with this:
+&lt;img src="images/opensecrets-nc01.png" width="40%" style="display: block; margin: auto auto auto 0;" /&gt;
+- and end with this:
+&lt;img src="images/opensecrets-map.png" width="50%" style="display: block; margin: auto auto auto 0;" /&gt;
+- and do so in a way that is easy to replicate for another state
+]
+
+---
+
+class: middle, center
+
+.xlarge[
+students will encounter lots of new challenges along the way — 
+
+let that happen,
+
+and then provide a solution
+]
+
+---
+
+- **Lesson:** Web scraping essentials for turning a structured table into a data frame in R.
+
+--
+- **Ex 1:** Scrape the table off the web and save as a data frame.
+
+&lt;img src="images/opensecrets-nc01-small.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="images/opensecrets-nc01-df.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+--
+.pull-left[
+- **Ex 2:** What other information do we need represented as variables in the data to obtain the desired facets? 
+]
+.pull-right[
+&lt;img src="images/opensecrets-map.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+--
+- **Lesson:** “Just enough” string parsing and regular expressions to achieve
+
+&lt;img src="images/opensecrets-nc01-parsed.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center
+
+.huge[
+🌎 &amp;nbsp; leverage the ecosystem  
+]
+
+---
+
+## What ecosystem?
+
+&lt;img src="images/ecosystem.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+.question[
+Estimate the difference between the average evaluation score of male and female faculty.
+]
+
+
+```
+## # A tibble: 463 x 5
+##    score rank         ethnicity    gender bty_avg
+##    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt;
+##  1   4.7 tenure track minority     female    5   
+##  2   4.1 tenure track minority     female    5   
+##  3   3.9 tenure track minority     female    5   
+##  4   4.8 tenure track minority     female    5   
+##  5   4.6 tenured      not minority male      3   
+##  6   4.3 tenured      not minority male      3   
+##  7   2.8 tenured      not minority male      3   
+##  8   4.1 tenured      not minority male      3.33
+##  9   3.4 tenured      not minority male      3.33
+## 10   4.5 tenured      not minority female    3.17
+## # … with 453 more rows
+```
+
+---
+
+## Base R
+
+.question[
+Estimate the difference between the average evaluation score of male and female faculty.
+]
+
+
+```r
+t.test(evals$bty_avg ~ evals$gender)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  evals$bty_avg by evals$gender
+## t = 2.8898, df = 401.53, p-value = 0.004064
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.1331423 0.6997496
+## sample estimates:
+## mean in group female   mean in group male 
+##             4.658897             4.242451
+```
+
+---
+
+## Tidyverse
+
+.huge[
+🤷‍♀
+]
+
+---
+
+
+
+
+## **infer**: Built with tidy principles in mind
+
+
+```r
+library(tidyverse)
+library(infer)
+
+evals %&gt;%
+  specify(score ~ gender) %&gt;%
+  generate(reps = 1000, 
+    type = "bootstrap") %&gt;%
+  calculate(stat = "diff in means", 
+    order = c("male", "female")) %&gt;%
+  summarise(
+    l = quantile(stat, 0.025), 
+    u = quantile(stat, 0.975)
+    )
+```
+
+```
+## # A tibble: 1 x 2
+##        l     u
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.0414 0.235
+```
+
+.footnote[
+[infer.netlify.com](https://infer.netlify.com)
+]
+
+---
+
+### Start with data
+
+
+```r
+*evals
+```
+
+```
+## # A tibble: 463 x 21
+##    score rank  ethnicity gender language   age cls_perc_eval cls_did_eval
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;
+##  1   4.7 tenu… minority  female english     36          55.8           24
+##  2   4.1 tenu… minority  female english     36          68.8           86
+##  3   3.9 tenu… minority  female english     36          60.8           76
+##  4   4.8 tenu… minority  female english     36          62.6           77
+##  5   4.6 tenu… not mino… male   english     59          85             17
+##  6   4.3 tenu… not mino… male   english     59          87.5           35
+##  7   2.8 tenu… not mino… male   english     59          88.6           39
+##  8   4.1 tenu… not mino… male   english     51         100             55
+##  9   3.4 tenu… not mino… male   english     51          56.9          111
+## 10   4.5 tenu… not mino… female english     40          87.0           40
+## # … with 453 more rows, and 13 more variables: cls_students &lt;dbl&gt;,
+## #   cls_level &lt;chr&gt;, cls_profs &lt;chr&gt;, cls_credits &lt;chr&gt;,
+## #   bty_f1lower &lt;dbl&gt;, bty_f1upper &lt;dbl&gt;, bty_f2upper &lt;dbl&gt;,
+## #   bty_m1lower &lt;dbl&gt;, bty_m1upper &lt;dbl&gt;, bty_m2upper &lt;dbl&gt;,
+## #   bty_avg &lt;dbl&gt;, pic_outfit &lt;chr&gt;, pic_color &lt;chr&gt;
+```
+
+---
+
+### Specify the model
+
+
+```r
+evals %&gt;%
+* specify(score ~ gender)
+```
+
+```
+## Response: score (numeric)
+## Explanatory: gender (factor)
+## # A tibble: 463 x 2
+##    score gender
+##    &lt;dbl&gt; &lt;fct&gt; 
+##  1   4.7 female
+##  2   4.1 female
+##  3   3.9 female
+##  4   4.8 female
+##  5   4.6 male  
+##  6   4.3 male  
+##  7   2.8 male  
+##  8   4.1 male  
+##  9   3.4 male  
+## 10   4.5 female
+## # … with 453 more rows
+```
+
+---
+
+### Generate bootstrap samples
+
+
+```r
+evals %&gt;%
+  specify(score ~ gender) %&gt;%
+* generate(reps = 1000, type = "bootstrap")
+```
+
+```
+## Response: score (numeric)
+## Explanatory: gender (factor)
+## # A tibble: 463,000 x 3
+## # Groups:   replicate [1,000]
+##    replicate score gender
+##        &lt;int&gt; &lt;dbl&gt; &lt;fct&gt; 
+##  1         1   4.9 male  
+##  2         1   4.9 female
+##  3         1   4.1 male  
+##  4         1   4.7 female
+##  5         1   4.9 female
+##  6         1   2.8 male  
+##  7         1   3.7 female
+##  8         1   4.8 male  
+##  9         1   3.8 male  
+## 10         1   3.1 male  
+## # … with 462,990 more rows
+```
+
+---
+
+### Calculate sample statistics
+
+
+```r
+evals %&gt;%
+  specify(score ~ gender) %&gt;%
+  generate(reps = 1000, type = "bootstrap") %&gt;%
+* calculate(stat = "diff in means", order = c("male", "female"))
+```
+
+```
+## # A tibble: 1,000 x 2
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1 0.129 
+##  2         2 0.163 
+##  3         3 0.154 
+##  4         4 0.0874
+##  5         5 0.0876
+##  6         6 0.0498
+##  7         7 0.121 
+##  8         8 0.167 
+##  9         9 0.104 
+## 10        10 0.163 
+## # … with 990 more rows
+```
+
+---
+
+### Visualize the bootstrap distribution
+
+Using syntax students are already familiar with from `ggplot2`:
+
+
+```r
+evals %&gt;%
+  specify(score ~ gender) %&gt;%
+  generate(reps = 1000, type = "bootstrap") %&gt;%
+  calculate(stat = "diff in means", order = c("male", "female")) %&gt;%
+* ggplot(mapping = aes(x = stat)) +
+*   geom_histogram()
+```
+
+&lt;img src="01-curriculum_files/figure-html/unnamed-chunk-50-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Summarise CI bounds
+
+Using syntax students are already familiar with from `dplyr`:
+
+
+```r
+evals %&gt;%
+  specify(score ~ gender) %&gt;%
+  generate(reps = 1000, type = "bootstrap") %&gt;%
+  calculate(stat = "diff in means", order = c("male", "female")) %&gt;%
+* summarise(l = quantile(stat, 0.025), u = quantile(stat, 0.975))
+```
+
+```
+## # A tibble: 1 x 2
+##        l     u
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.0437 0.236
+```
+  
+---
+
+class: center, middle
+
+.xlarge[
+want to see the full curriculum?
+]
+
+---
+
+&lt;img src="images/dsbox.png" width="100%" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "solarized-light",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

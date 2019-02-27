@@ -1,0 +1,478 @@
+---
+title: "Computing Infrastructure and Curriculum Design for Introductory Data Science <br><br> Part 3 - Classroom management"
+author: "SIGCSE 2019"
+date: "<br><br> Feb 27, 2019 <br> Mine Cetinkaya-Rundel"
+output: 
+  xaringan::moon_reader:
+    css: ["../slides.css"]
+    lib_dir: libs
+    nature:
+      highlightLines: true
+      highlightStyle: solarized-light
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r child = "../setup.Rmd"}
+```
+
+## Goals
+
+- Centralize the distribution and collection of all student assignments
+- Enable students to work collaboratively
+- Force students to use git & GitHub
+  - Version control is a best practice for reproducible research
+  - Widely used in industry 
+  - Publish / share work
+  
+---
+
+## GitHub accounts
+
+<br/>
+
+Enter your GitHub account in the following google sheet:
+
+<br/>
+
+.center[.large[
+[rstd.io/sigcse19-ghnames](https://rstd.io/sigcse19-ghnames)
+]]
+
+---
+
+## Basic Structure
+
+On Github:
+
+- 1 Organization / class
+- 1 repo / (student or team) / assignment
+- Student and team repos are all private by default
+
+---
+
+## Setting up a course
+
+1. Create course organization on GitHub: [github.com/organizations/new](https://github.com/organizations/new)
+
+2. Request education discount for organization [education.github.com/discount](https://education.github.com/discount)
+
+3. Invite students to organization
+
+4. Create assignment(s)
+
+5. Collect assignments(s)
+
+6. Grade assignment(s)
+
+---
+
+## 1. Create course organization
+
+```{r echo=FALSE}
+knitr::include_graphics("images/create_org.png")
+```
+
+---
+
+## 2. Request education discount
+
+```{r echo=FALSE}
+knitr::include_graphics("images/ed_discount.png")
+```
+...
+
+```{r echo=FALSE}
+knitr::include_graphics("images/ed_about.png")
+```
+
+---
+
+## Required information
+
+When requesting the discount you will need to provide the following:
+
+- A brief description of the purpose for the GitHub organization and how you plan to use GitHub
+- Establishing connection to an academic institution by verifying with an `.edu` email + photo of your school id.
+- Link to relevant website for the class / workshop / research group
+
+<br>
+
+Verification is manual and can take between a couple hours to a couple days.
+
+---
+
+## 3. Invite students
+
+```{r echo=FALSE}
+knitr::include_graphics("images/org_people.png")
+knitr::include_graphics("images/org_invite.png")
+```
+
+---
+
+## Member Privledges
+
+```{r echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/org_member_permissions.png")
+```
+
+---
+
+## Member Privledges
+
+```{r echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/org_admin_permissions.png")
+```
+
+---
+
+## Automating Invitations
+
+Inviting students to the organization only needs to be done once be class, but the process gets tedious for more than a handful of students.
+
+<br>
+
+We have developed an R package that automates this (and other class related tasks) called `ghclass`. 
+
+The package is still under active development and is not currently on CRAN but can be installed from GitHub using:
+```{r eval=FALSE}
+devtools::install_github("rundel/ghclass")
+```
+
+---
+
+## Aside - GitHub tokens
+
+`ghclass` uses the GitHub API to interact with your course organization and repos - the API verifies your identity using a personal access token which must be created and saved in such a way that `ghclass` can find and use it.
+
+These tokens can be created [here](https://github.com/settings/tokens) and once created should be saved to `~/.github/token` or assigned to the `GITHUB_TOKEN` environmentval variable.
+
+---
+
+## Checking tokens
+
+If the token is found and works correctly the following code should run without error
+
+```{r error=TRUE, message=FALSE}
+library(ghclass)
+test_github_token()
+```
+
+If instead the token is invalid or not found, you will see something like the following
+
+```{r error=TRUE, message=FALSE}
+test_github_token("MADE_UP_TOKEN")
+```
+
+---
+
+## ghclass - Inviting students
+
+```{r eval=FALSE}
+users <- c("Alice", "Bob", "Carol", "Dave", "Eve")
+
+invite_user("sta771-f18", users, verbose = TRUE)
+```
+
+```
+## Adding Alice to sta771-f18 ...
+## Adding Bob to sta771-f18 ...
+## Adding Carol to sta771-f18 ...
+## Adding Dave to sta771-f18 ...
+## Adding Eve to sta771-f18 ...
+```
+
+---
+
+## ghclass - Student status
+
+```{r}
+get_members("sta771-f18")
+```
+
+```{r}
+get_pending_members("sta771-f18")
+```
+
+---
+
+## 4. Create assignment(s)
+
+There are a few moving parts here, so we will break it down into several steps. For each assignment we do the following:
+
+1. Create a (public) template repository that contains starter documents for an assignment
+
+2. Create (private) individual / team repositories
+
+3. Copy the contents of the template repository into the individual / team repositories
+
+---
+
+## 4.1 Template repository
+
+```{r echo=FALSE}
+knitr::include_graphics("images/demo.png")
+```
+
+---
+
+## 4.2 Individual repos
+
+```{r eval=FALSE}
+users = c("Alice","Bob","Carol","Dave","Eve")
+
+create_individual_repo("sta771-f18", users, 
+                       prefix = "hw01-")
+```
+
+```
+## Creating hw01-Alice for Alice ...
+## Creating hw01-Bob for Bob ...
+## Creating hw01-Carol for Carol ...
+## Creating hw01-Dave for Dave ...
+## Creating hw01-Eve for Eve ...
+```
+
+---
+
+## 4.3 Copy template
+
+```{r eval=FALSE}
+mirror_repo(
+  source_repo = "sta771-f18/hw01", 
+  target_repos = get_repos("sta771-f18","hw01-")
+)
+```
+
+```
+## Cloning source repo (sta771-f18/hw01) ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw01-Alice ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw01-Bob ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw01-Carol ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw01-Dave ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw01-Eve ...
+## Cleaning up ...
+```
+
+---
+
+## Exercise
+
+You all now should have your own private copy of the demo repository within the `sta771-f18` organization.
+
+- Go to the page for *your* hw01 repo
+- Copy the *https* git url for your repo using the clone button.
+- Use that url to create a new project in RStudio Cloud from git
+- Complete the exercise and commit and push your work as described in `hw01.Rmd`.
+
+<br/>
+
+.midi[
+*Reminder* - before you will be to push you will need to run the following commands in RStudio Cloud's terminal:
+
+```shell
+git config --global user.email "your email"
+git config --global user.name "your name"
+```
+]
+
+---
+
+## Creating teams
+
+GitHub supports the creation of teams within an organization, these teams can then be assigned a shared repository.
+
+We can use ghclass to create these teams and add students to them.
+
+```{r eval=FALSE}
+users = c("Alice","Bob","Carol","Dave","Eve")
+teams = c("Team01", "Team01", "Team01", "Team02", "Team02")
+
+create_team("sta771-f18", unique(teams))
+```
+
+```
+## Adding Team01 ...
+## Adding Team02 ...
+```
+
+```{r eval=FALSE}
+add_team_member("sta771-f18", users, teams)
+```
+
+```
+## Adding Alice to Team01 ...
+## Adding Bob to Team01 ...
+## Adding Carol to Team01 ...
+## Adding Dave to Team02 ...
+## Adding Eve to Team02 ...
+```
+
+---
+
+## Creating team assignments
+
+```{r eval=FALSE}
+create_team_repo("sta771-f18", prefix="hw01-")
+```
+```
+## Creating hw01-Team01 for Team01 ...
+## Creating hw01-Team02 for Team02 ...
+```
+
+```{r eval=FALSE}
+mirror_repo(
+  source_repo = "sta771-f18/hw01", 
+  target_repos = get_repos("sta771-f18","hw01-")
+)
+```
+```
+## Cloning source repo (sta771-f18/hw01) ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw2-Team01 ...
+## Mirroring sta771-f18/hw01 to sta771-f18/hw2-Team02 ...
+## Cleaning up ...
+```
+
+---
+
+## 5. Collecting Assignments
+
+```{r eval=FALSE}
+repos = get_repos("sta771-f18",filter = "hw01-")
+
+clone_repo(repos, "hw01", verbose = TRUE)
+```
+```
+## Cloning into 'hw01/hw01-Alice'...
+## Cloning into 'hw01/hw01-Bob'...
+## Cloning into 'hw01/hw01-Clare'...
+## Cloning into 'hw01/hw01-Dave'...
+## Cloning into 'hw01/hw01-Eve'...
+## Cloning into 'hw01/hw01-Team01'...
+## Cloning into 'hw01/hw01-Team02'...
+```
+
+---
+
+## 6. Grading assignments
+
+```{r echo=FALSE}
+knitr::include_graphics("images/local_clone.png")
+```
+
+---
+
+class: center, middle
+count: false
+
+# Alternatives
+
+---
+
+## GitHub classroom
+
+```{r echo=FALSE}
+knitr::include_graphics("images/classroom.png")
+```
+
+https://classroom.github.com/
+
+
+---
+
+## Class
+
+.center[
+![](images/classroom_class.png)
+]
+
+```{r echo=FALSE}
+knitr::include_graphics("images/classroom_class.png")
+```
+
+---
+
+## Individual assignments
+
+.center[
+![](images/classroom_assignment.png)
+]
+
+classroom.png
+
+---
+
+## Group assignments
+
+```{r echo=FALSE}
+knitr::include_graphics("images/classroom_group.png")
+```
+
+
+---
+
+class: center, middle
+count: false
+
+# Feedback
+
+---
+
+## Issues on GitHub by course admins
+
+- Instructors (and TAs) can view all repositories within the course organization.
+- You can open issues in a repository with feedback for the students.
+- Make sure to `@` mention the student so that they are notified when an issue is opened.
+
+<br/>
+**Note:** You might want to consider keeping points out of issues.
+
+---
+
+## Peer review
+
+- Once an assignment is completed you can let other students/teams into a repository and they can provide peer review.
+- Peer review is an incredibly effective learning experience for both the reviewers and the reviewees, however it does require coordination and being able to carve out sufficient time in the course schedule.
+
+<br/>
+**Tip:** Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviwing individuals, might address this issue partially.
+
+---
+
+## Pull requests
+
+- Another option is to open pull requests for your students' work where you directly edit their work and ask them to approve the edits.
+- This can be effective as students will see your corrections and review them before accepting them.
+- However this also does mean that you're directly correcting their work as opposed to giving them higher level instructions on how to correct it.
+
+---
+
+## Demo
+
+<br>
+
+.large[
+adding you to my class...
+]
+
+---
+
+## Exercise: `04 - Join my class on GitHub`
+
+**Scenario 1:** (Individual) You're a student
+
+- Go to the GitHub organization for our "class". Observe that you can only see the template repo and your own repo.
+
+**Scenario 2:** (Team) You're an instructor
+
+- First, we'll change the access level for some of you so that you're an *Owner* of the repo
+- Go to the GitHub organization for our "class" and observe that now you can see all repos.
+- Go into the repo for your partner. Open an issue and add some text to the issue. In the issue `@` mention their username. Submit your issue.
+- Check your email to confirm that you got notified of an issue being filed in your repo, and review the issue.
+
+---
+
+## Exercise: `05- Close the circle`
+
+Create a new project in RStudio Cloud from GitHub. Follow along with me.
