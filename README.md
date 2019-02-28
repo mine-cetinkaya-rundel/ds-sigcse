@@ -45,16 +45,18 @@ Workshop attendees will work through several exercises from the course
 and get first-hand experience with using the tool-chains and techniques
 described above. All workshop content, including teacher facing
 documentation and student facing course materials, will also be
-available to participants via datasciencebox.org.
+available to participants via
+    datasciencebox.org.
 
 ## Slides
 
-  - [Welcome](/slides/00-welcome/00-welcome.html)
-  - [Part 1 - Curriculum](/slides/01-curriculum/01-curriculum.html)
+  - [Welcome](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/00-welcome/00-welcome.html)
+  - [Part 1 -
+    Curriculum](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/01-curriculum/01-curriculum.html)
   - [Part 2 -
-    Infrastructure](/slides/02-infrastructure/02-infrastructure.html)
+    Infrastructure](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/02-infrastructure/02-infrastructure.html)
   - [Part 3 - Classroom
-    management](/slides/03-classroom/03-classroom.html)
+    management](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/03-classroom/03-classroom.html)
 
 ## Pre-workshop instructions
 
