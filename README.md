@@ -1,9 +1,12 @@
 
 # Computing Infrastructure and Curriculum Design for Introductory Data Science
 
-This repo contains materials for the “Computing Infrastructure and
-Curriculum Design for Introductory Data Science” workshop at SIGCSE 2019
-in Minneapolis, MN.
+TMaterials for the “Computing Infrastructure and Curriculum Design for
+Introductory Data Science” workshop at SIGCSE 2019 in Minneapolis, MN.
+
+See the GitHub repo
+[here](https://github.com/mine-cetinkaya-rundel/ds-sigcse), and the
+RStudio Cloud space [here](http://rstd.io/sigcse19-cloud).
 
 ## When and where
 
@@ -57,6 +60,7 @@ available to participants via
     Infrastructure](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/02-infrastructure/02-infrastructure.html)
   - [Part 3 - Classroom
     management](https://mine-cetinkaya-rundel.github.io/ds-sigcse/slides/03-classroom/03-classroom.html)
+      - [Demo](https://github.com/mine-cetinkaya-rundel/ds-sigcse/tree/master/demo)
 
 ## Pre-workshop instructions
 
